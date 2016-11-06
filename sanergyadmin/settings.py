@@ -80,19 +80,19 @@ DATABASES = {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     },
-    'salesforce': {
-        'ENGINE': 'salesforce.backend',
+    #'salesforce': {
+    #    'ENGINE': 'salesforce.backend',
         #'CONSUMER_KEY': '',
         #'CONSUMER_SECRET': '',
-        'USER': 'jlee24@stanford.edu.ffa',
-        'PASSWORD': 'cs50rocks',
-        'HOST': 'http://sanergy--ffa.cs81.my.salesforce.com',
-    }
+    #    'USER': 'jlee24@stanford.edu.ffa',
+    #    'PASSWORD': 'cs50rocks',
+    #    'HOST': 'http://sanergy--ffa.cs81.my.salesforce.com',
+    #}
 }
 
-DATABASE_ROUTERS = [
-    "salesforce.router.ModelRouter"
-]
+#DATABASE_ROUTERS = [
+#    "salesforce.router.ModelRouter"
+#]
 
 # Password validation
 # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators
