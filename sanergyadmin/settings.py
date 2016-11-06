@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'schedule',
+    'djangobower',	
     #'salesforce'
 ]
 
@@ -53,6 +55,15 @@ MIDDLEWARE_CLASSES = [
 
 ROOT_URLCONF = 'sanergyadmin.urls'
 
+STATICFILES_FINDERS =[
+	'djangobower.finders.BowerFinder',
+]
+
+BOWER_INSTALLED_APPS = (
+	'jquery',
+	'bootstrap'
+)
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -68,6 +79,10 @@ TEMPLATES = [
         },
     },
 ]
+
+TEMPLATE_CONTEXT_PROCESSORS = [
+	"django.core.context_processors.request",
+	]
 
 WSGI_APPLICATION = 'sanergyadmin.wsgi.application'
 
