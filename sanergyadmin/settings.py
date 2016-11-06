@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'schedule',
-    'djangobower',	
+    'djangobower',
+    'calendarApp',	
     #'salesforce'
 ]
 
@@ -80,9 +81,7 @@ TEMPLATES = [
     },
 ]
 
-TEMPLATE_CONTEXT_PROCESSORS = [
-	"django.core.context_processors.request",
-	]
+
 
 WSGI_APPLICATION = 'sanergyadmin.wsgi.application'
 
