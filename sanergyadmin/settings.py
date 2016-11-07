@@ -85,6 +85,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'sanergyadmin.wsgi.application'
 
+BOWER_COMPONENTS_ROOT = '/calendarApp/bower_components/'
 
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
