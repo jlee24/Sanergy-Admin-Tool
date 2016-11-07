@@ -55,6 +55,8 @@ MIDDLEWARE_CLASSES = [
 
 ROOT_URLCONF = 'sanergyadmin.urls'
 
+BOWER_COMPONENTS_ROOT = '/sanergyadmin/bower_components/'
+
 STATICFILES_FINDERS =[
 	'djangobower.finders.BowerFinder',
 ]
