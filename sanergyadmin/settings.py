@@ -15,6 +15,7 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+PROJECT_PATH = os.path.realpath(os.path.dirname(__file__))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.9/howto/deployment/checklist/
@@ -57,6 +58,8 @@ MIDDLEWARE_CLASSES = [
 ROOT_URLCONF = 'sanergyadmin.urls'
 
 STATICFILES_FINDERS =[
+        'django.contrib.staticfiles.finders.FileSystemFinder',
+        'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 	'djangobower.finders.BowerFinder',
 ]
 
@@ -68,7 +71,7 @@ BOWER_INSTALLED_APPS = (
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(PROJECT_PATH, 'calendarApp/templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -85,7 +88,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'sanergyadmin.wsgi.application'
 
-BOWER_COMPONENTS_ROOT = '/calendarApp/bower_components/'
+BOWER_COMPONENTS_ROOT = 'PROJECT_PATH/calendarApp/bower_components/'
 
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
