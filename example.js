@@ -21,7 +21,7 @@ angular
     }];
     vm.events = [
       {
-        title: 'An event',
+        title: 'Scheduled Village 1, Emptier: Drumpf',
         color: calendarConfig.colorTypes.warning,
         startsAt: moment().startOf('week').subtract(2, 'days').add(8, 'hours').toDate(),
         endsAt: moment().startOf('week').add(1, 'week').add(9, 'hours').toDate(),
@@ -29,7 +29,7 @@ angular
         resizable: true,
         actions: actions
       }, {
-        title: '<i class="glyphicon glyphicon-asterisk"></i> <span class="text-primary">Another event</span>, with a <i>html</i> title',
+        title: 'Need to Schedule! Village 2',
         color: calendarConfig.colorTypes.info,
         startsAt: moment().subtract(1, 'day').toDate(),
         endsAt: moment().add(5, 'days').toDate(),
@@ -37,7 +37,7 @@ angular
         resizable: true,
         actions: actions
       }, {
-        title: 'This is a really long event title that occurs on every year',
+        title: 'Scheduled Village 3',
         color: calendarConfig.colorTypes.important,
         startsAt: moment().startOf('day').add(7, 'hours').toDate(),
         endsAt: moment().startOf('day').add(19, 'hours').toDate(),
