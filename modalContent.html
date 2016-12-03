@@ -1,13 +1,30 @@
 <div class="modal-header">
-  <h3 class="modal-title">Event action occurred!</h3>
+  <h3 class="modal-title">Who's responding to {{ vm.event.customer }}'s request? </h3>
 </div>
 <div class="modal-body">
-  <p>Action:
+  <!-- <p>Action:
     <pre>{{ vm.action }}</pre>
   </p>
   <p>Event:
     <pre>{{ vm.event | json }}</pre>
-  </p>
+  </p> -->
+
+  <form name="userForm" novalidate>
+  	<label>{{ vm.event.customer }}'s Location</label>
+  	{{ vm.event.location }}
+	<div class="form-group" ng-class="{ 'has-error' : serviceForm.name.$invalid }">
+		<ng-form name="serviceForm">
+		    <label>Serviceman's Name</label>
+		    <input type="text" class="form-control" name="name" ng-model="vm.event.emptiername" required>
+		    <p class="help-block" ng-show="serviceForm.name.$invalid">Name Required</p>
+
+		    <label>Serviceman's Phone Number</label>
+		    <input type="text" class="form-control" name="number" ng-model="vm.event.emptiernum" required>
+		    <p class="help-block" ng-show="serviceForm.number.$invalid">Phone Number Required</p>
+		  </ng-form>
+	  </div>
+
+	</form>
 </div>
 <div class="modal-footer">
   <button class="btn btn-primary" ng-click="$close()">OK</button>

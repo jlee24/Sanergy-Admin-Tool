@@ -19,34 +19,87 @@ angular
         alert.show('Deleted', args.calendarEvent);
       }
     }];
+
     vm.events = [
+      // {
+      //   title: 'Scheduled Village 1, Emptier: Drumpf',
+      //   color: calendarConfig.colorTypes.warning,
+      //   startsAt: moment().startOf('week').subtract(2, 'days').add(8, 'hours').toDate(),
+      //   endsAt: moment().startOf('week').add(1, 'week').add(9, 'hours').toDate(),
+      //   draggable: true,
+      //   resizable: true,
+      //   actions: actions
+      // }, {
+      //   title: 'Need to Schedule! Village 2',
+      //   color: calendarConfig.colorTypes.info,
+      //   startsAt: moment().subtract(1, 'day').toDate(),
+      //   endsAt: moment().add(5, 'days').toDate(),
+      //   draggable: true,
+      //   resizable: true,
+      //   actions: actions
+      // }, {
+      //   title: 'Scheduled Village 3',
+      //   color: calendarConfig.colorTypes.important,
+      //   startsAt: moment().startOf('day').add(7, 'hours').toDate(),
+      //   endsAt: moment().startOf('day').add(19, 'hours').toDate(),
+      //   recursOn: 'year',
+      //   draggable: true,
+      //   resizable: true,
+      //   actions: actions
+      // }
+    ];
+
+    customers = [
       {
-        title: 'Scheduled Village 1, Emptier: Drumpf',
-        color: calendarConfig.colorTypes.warning,
-        startsAt: moment().startOf('week').subtract(2, 'days').add(8, 'hours').toDate(),
-        endsAt: moment().startOf('week').add(1, 'week').add(9, 'hours').toDate(),
-        draggable: true,
-        resizable: true,
-        actions: actions
-      }, {
-        title: 'Need to Schedule! Village 2',
-        color: calendarConfig.colorTypes.info,
-        startsAt: moment().subtract(1, 'day').toDate(),
-        endsAt: moment().add(5, 'days').toDate(),
-        draggable: true,
-        resizable: true,
-        actions: actions
-      }, {
-        title: 'Scheduled Village 3',
-        color: calendarConfig.colorTypes.important,
-        startsAt: moment().startOf('day').add(7, 'hours').toDate(),
-        endsAt: moment().startOf('day').add(19, 'hours').toDate(),
-        recursOn: 'year',
-        draggable: true,
-        resizable: true,
-        actions: actions
+        name: 'User One',
+        location: 'Tatu City',
+        schedule: 'Mon-9 Fri-14',
+
+      },
+      {
+        name: 'User Two',
+        location: 'Githurai',
+        schedule: 'Tue-13',
       }
     ];
+
+    customers.forEach(function(c) {
+      var dayStrings = c.schedule.split(" ");
+      var days = [];
+      dayStrings.forEach(function(day) {
+        var regexp = /([a-zA-Z]{3})-(\d+)/g;
+        var match = regexp.exec(day);
+        var num = 0;
+        if (match[1] == 'Mon') num = 1;
+        else if (match[1] == 'Tue') num = 2;
+        else if (match[1] == 'Wed') num = 3;
+        else if (match[1] == 'Thu') num = 4;
+        else if (match[1] == 'Fri') num = 5;
+        days.push({
+          dow: num, //day of week
+          tod: parseInt(match[2]) //time of day
+        });
+      });
+
+      days.forEach(function(daySchedule) {
+        console.log(daySchedule);
+        for (i = 0; i < 5; i++) {
+          vm.events.push({
+            title: c.name + ", " + c.location,
+            color: calendarConfig.colorTypes.info,
+            startsAt: moment().weekday(daySchedule.dow + i*7).startOf('day').add(daySchedule.tod, 'hours').toDate(),
+            endsAt: moment().weekday(daySchedule.dow + i*7).startOf('day').add(daySchedule.tod + 2, 'hours').toDate(),
+            draggable: true,
+            resizable: true,
+            actions: actions,
+            emptiername: '',
+            emptiernum: '',
+            customer: c.name,
+            location: c.location
+          });
+        }
+      });      
+    });
 
     vm.cellIsOpen = true;
 
@@ -61,8 +114,13 @@ angular
       });
     };
 
+    vm.editEvent = function(event) {
+
+    }
+
     vm.eventClicked = function(event) {
-      alert.show('Clicked', event);
+      //alert.show('Clicked', event);
+      alert.show('Edited', event);
     };
 
     vm.eventEdited = function(event) {
