@@ -49,17 +49,22 @@ angular
       // }
     ];
 
+    $.getJSON("customers.json", function(data) {
+      console.log("hello world");
+      console.log(data);
+    });
+
     customers = [
       {
-        name: 'User One',
+        name: 'Phiona Mutesi',
         location: 'Tatu City',
-        schedule: 'Mon-9 Fri-14',
+        schedule: 'Mon-8 Fri-10',
 
       },
       {
-        name: 'User Two',
+        name: 'Robert Katende',
         location: 'Githurai',
-        schedule: 'Tue-13',
+        schedule: 'Tue-11:30',
       }
     ];
 
